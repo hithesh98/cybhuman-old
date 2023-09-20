@@ -1,13 +1,13 @@
 ---
 import { readAll } from "../lib/markdoc/read";
-import { blog } from "../lib/markdoc/frontmatter.schema";
+import { essays } from "../lib/markdoc/frontmatter.schema";
 import PageLayout from "../layouts/PageLayout.astro";
 import PageMeta from "../components/PageMeta.astro";
 import { SITE_TITLE } from "../config";
 
 const posts = await readAll({
-  directory: "blog",
-  frontmatterSchema: blog,
+  directory: "essays",
+  frontmatterSchema: essays,
 });
 
 const sortedPosts = posts
@@ -53,7 +53,7 @@ const sortedPosts = posts
                   </a>
                 ) : (
                   <a
-                    href={`/blog/${post.slug}`}
+                    href={`/essays/${post.slug}`}
                     class="unset
                         transition-[background-size] duration-300 
                         bg-gradient-to-r bg-left-bottom bg-no-repeat
