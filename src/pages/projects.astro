@@ -30,7 +30,6 @@ const sortedProjects = projects
           ).toLocaleDateString("en-us", {
             year: "numeric",
             month: "short",
-            day: "numeric",
           });
           return (
             <li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
@@ -52,9 +51,13 @@ const sortedProjects = projects
                 </a>
               </div>
               <div class="text-text-muted text-sm italic pt-1">
-                <time datetime={project.frontmatter.date.toISOString()}>
-                  {formattedDate}
-                </time>
+                {project.frontmatter.wip ? (
+                  <p>Present</p>
+                ) : (
+                  <time datetime={project.frontmatter.date.toISOString()}>
+                    {formattedDate}
+                  </time>
+                )}
               </div>
             </li>
           );
